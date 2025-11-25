@@ -3,10 +3,12 @@ const app = Vue.createApp({
     return {
       cart: 0,
       product: "Socks",
+      brand: "Camaro",
+      selectedVariant: 0,
       description: "Keeps feet warm",
       image: "./assets/images/socks_green.jpg",
       inventory: 15,
-      onSale: false,
+      onSale: true,
       inStock: true,
       details: ["50% cotton", "30% wool", "20% polyester"],
       sizes: ["S", "M", "L", "XL"],
@@ -24,4 +26,21 @@ const app = Vue.createApp({
       this.image = variantImage;
     },
   },
+  computed: {
+        title() {
+            return this.brand + ' ' + this.product
+        },
+        image() {
+            return this.variants[this.selectedVariant].image
+        },
+        inStock() {
+            return this.variants[this.selectedVariant].quantity
+        },
+        sale() {
+            if (this.onSale) {
+                return this.brand + ' ' + this.product + ' is on sale.'
+            }
+            return ''
+        }
+  }
 });
