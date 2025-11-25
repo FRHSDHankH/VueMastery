@@ -3,7 +3,9 @@ const app = Vue.createApp({
     return {
       product: 'Socks',
       description: 'Keeps feet warm',
-      image: './assets/images/socks_green.jpg'
+      image: './assets/images/socks_green.jpg',
+      inventory: 15,
+      onSale: true
     };
   }
 });
